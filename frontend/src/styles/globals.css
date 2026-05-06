@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy:    #0D2340;
+  --blue:    #1A6B9A;
+  --teal:    #0E9E8E;
+  --sky:     #E8F4FA;
+  --mint:    #E6F7F5;
+  --paper:   #F7F9FB;
+  --white:   #FFFFFF;
+  --ink:     #0D1B2A;
+  --mid:     #4A6070;
+  --muted:   #7A92A3;
+  --line:    #DDE4EA;
+  --good:    #0D7A50;
+  --good-bg: #E8F7F0;
+  --warn:    #A05C00;
+  --warn-bg: #FEF3E2;
+  --bad:     #B91C1C;
+  --bad-bg:  #FEF0F0;
+  --shadow-sm: 0 1px 4px rgba(13,35,64,.07);
+  --shadow:    0 4px 18px rgba(13,35,64,.09);
+  --shadow-lg: 0 12px 40px rgba(13,35,64,.13);
+  --r: 14px;
+  --r2: 20px;
+  --domain-accent: #0E9E8E;
+  --domain-accent-bg: #E6F7F5;
+}
+
+.dark {
+  --navy:    #A8C8E8;
+  --blue:    #5BA8D4;
+  --teal:    #2BC4B3;
+  --sky:     #0F2033;
+  --mint:    #0A2220;
+  --paper:   #0B1523;
+  --white:   #111D2C;
+  --ink:     #E8F0F8;
+  --mid:     #8AAFC6;
+  --muted:   #5A7A90;
+  --line:    #1E3048;
+  --good:    #34D399;
+  --good-bg: #0A2C20;
+  --warn:    #FBBF24;
+  --warn-bg: #2A1E06;
+  --bad:     #F87171;
+  --bad-bg:  #2A0A0A;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.35);
+  --shadow:    0 4px 18px rgba(0,0,0,.4);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,.5);
+}
+
+.domain-cardiology   { --domain-accent: #C0392B; --domain-accent-bg: #FDEAE9; }
+.domain-neurology    { --domain-accent: #7B2FBE; --domain-accent-bg: #F2EAFC; }
+.domain-diabetes     { --domain-accent: #1E8449; --domain-accent-bg: #E8F8F0; }
+.domain-oncology     { --domain-accent: #E67E22; --domain-accent-bg: #FEF3E7; }
+.domain-pulmonology  { --domain-accent: #2980B9; --domain-accent-bg: #E8F4FA; }
+.domain-nephrology   { --domain-accent: #16A085; --domain-accent-bg: #E5F7F4; }
+.domain-psychiatry   { --domain-accent: #6C3483; --domain-accent-bg: #F0E9F8; }
+.domain-ophthalmology{ --domain-accent: #1A5276; --domain-accent-bg: #E4EFF8; }
+.domain-emergency    { --domain-accent: #C0392B; --domain-accent-bg: #FDEAE9; }
+.dark .domain-cardiology   { --domain-accent: #E57373; --domain-accent-bg: #2C0D0D; }
+.dark .domain-neurology    { --domain-accent: #CE93D8; --domain-accent-bg: #1A0D26; }
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+  transition: background .25s, color .25s;
+}
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 9px; }
+
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--line);
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 999px;
+  background: var(--navy);
+  border: 2px solid white;
+  box-shadow: 0 2px 6px rgba(13,35,64,.25);
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.2s ease-out; }
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+.pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--line) 25%, var(--paper) 50%, var(--line) 75%);
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 4px;
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.count-up { animation: countUp 0.4s cubic-bezier(.22,1,.36,1) forwards; }
+
+@keyframes fillBar {
+  from { width: 0; }
+}
+
+@keyframes trainPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(14,158,142,0); }
+  50% { box-shadow: 0 0 0 6px rgba(14,158,142,.15); }
+}
+
+.banner-danger {
+  background: var(--bad-bg);
+  border: 1px solid #FCA5A5;
+  border-left: 4px solid var(--bad);
+  border-radius: var(--r);
+  padding: 12px 16px;
+}
+.banner-warn {
+  background: var(--warn-bg);
+  border: 1px solid #FCD34D;
+  border-left: 4px solid var(--warn);
+  border-radius: var(--r);
+  padding: 12px 16px;
+}
+.banner-good {
+  background: var(--good-bg);
+  border: 1px solid #6EE7B7;
+  border-left: 4px solid var(--good);
+  border-radius: var(--r);
+  padding: 12px 16px;
+}
+.banner-info {
+  background: var(--sky);
+  border: 1px solid #BAE6FD;
+  border-left: 4px solid var(--blue);
+  border-radius: var(--r);
+  padding: 12px 16px;
+}
+
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(13,35,64,0.45);
+  backdrop-filter: blur(3px);
+  z-index: 200;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+
+.metric-tile {
+  transition: transform .15s, box-shadow .15s;
+}
+.metric-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
